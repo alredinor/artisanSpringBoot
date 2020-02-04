@@ -20,7 +20,7 @@ public class UserRole {
 	private Integer id;
 	@ManyToOne
 	@JoinColumn(name = "login")
-	private Login login;
+	private Compte idCompte;
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
@@ -36,12 +36,14 @@ public class UserRole {
 		this.id = id;
 	}
 
-	public Login getLogin() {
-		return login;
+	
+
+	public Compte getIdCompte() {
+		return idCompte;
 	}
 
-	public void setLogin(Login login) {
-		this.login = login;
+	public void setIdCompte(Compte idCompte) {
+		this.idCompte = idCompte;
 	}
 
 	public Role getRole() {

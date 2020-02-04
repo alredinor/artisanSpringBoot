@@ -1,5 +1,7 @@
 package artisanSpringBoot.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -39,6 +41,27 @@ public class Compte {
 	@Column(name="version")
 	private int version;
 	
+	private boolean enable;
+	@OneToMany(mappedBy = "idCompte")
+	private Set<UserRole> roles;
+	
+	
+	public boolean isEnable() {
+		return enable;
+	}
+
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
+
+	public Set<UserRole> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<UserRole> roles) {
+		this.roles = roles;
+	}
+
 	public int getVersion() {
 		return version;
 	}
