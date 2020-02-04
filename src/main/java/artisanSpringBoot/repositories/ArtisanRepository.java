@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import model.Adresse;
-import model.Artisan;
+import artisanSpringBoot.model.Adresse;
+import artisanSpringBoot.model.Artisan;
 
 
 public interface ArtisanRepository extends JpaRepository<Artisan, Long> {

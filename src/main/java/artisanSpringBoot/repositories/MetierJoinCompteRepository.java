@@ -5,9 +5,9 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import model.Compte;
-import model.Metier;
-import model.MetierJoinCompte;
+import artisanSpringBoot.model.Compte;
+import artisanSpringBoot.model.Metier;
+import artisanSpringBoot.model.MetierJoinCompte;
 
 public interface MetierJoinCompteRepository extends JpaRepository<MetierJoinCompte, Long> {
 	

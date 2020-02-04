@@ -3,13 +3,13 @@ package artisanSpringBoot.repositories;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.service.Service;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import model.Compte;
-import model.Demande;
-import model.Metier;
-import model.Service;
-import model.StatutDemande;
+import artisanSpringBoot.model.Compte;
+import artisanSpringBoot.model.Demande;
+import artisanSpringBoot.model.Metier;
+import artisanSpringBoot.model.StatutDemande;
 
 public interface DemandeRepository extends JpaRepository<Demande, Long>{
 	
