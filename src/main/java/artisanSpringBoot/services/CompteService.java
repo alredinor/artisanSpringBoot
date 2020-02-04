@@ -2,8 +2,8 @@ package artisanSpringBoot.services;
 
 import java.util.Optional;
 
-import model.Compte;
-import repository.CompteRepository;
+import artisanSpringBoot.model.Compte;
+import artisanSpringBoot.repositories.CompteRepository;
 
 public class CompteService 
 {

@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import repository.ServiceRepository;
+import artisanSpringBoot.repositories.ServiceRepository;
 
 
 @Service
@@ -14,10 +14,10 @@ public class ServiceService {
 	@Autowired
 	private ServiceRepository serviceRepository;
 
-	public boolean save(model.Service s) {
-		model.Service ServiceBase = null;
+	public boolean save(artisanSpringBoot.model.Service s) {
+		artisanSpringBoot.model.Service ServiceBase = null;
 		if (s.getIdService() != null) {
-			Optional<model.Service> opt = serviceRepository.findByIdService(s.getIdService()); // optionnal : renvois un objet
+			Optional<artisanSpringBoot.model.Service> opt = serviceRepository.findByIdService(s.getIdService()); // optionnal : renvois un objet
 			if (opt.isPresent()) {
 				ServiceBase = opt.get();
 				ServiceBase.setNomService((s.getNomService() != null) ? s.getNomService() : ServiceBase.getNomService());

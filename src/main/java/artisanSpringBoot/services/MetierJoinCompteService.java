@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import model.MetierJoinCompte;
-import repository.MetierJoinCompteRepository;
+import artisanSpringBoot.model.MetierJoinCompte;
+import artisanSpringBoot.repositories.MetierJoinCompteRepository;
 
 @Service
 public class MetierJoinCompteService {
