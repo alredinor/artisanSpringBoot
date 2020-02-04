@@ -8,22 +8,24 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import artisanSpringBoot.model.Login;
+import artisanSpringBoot.model.Compte;
+import artisanSpringBoot.model.UserRole;
+
 
 
 public class ArtisanCustomUserDetails implements UserDetails{
 
-	private Login login;
+	private Compte compte;
 
-	public CustomUserDetails(Login login) {
-		this.login=login;
+	public ArtisanCustomUserDetails(Compte compte) {
+		this.compte=compte;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set <SimpleGrantedAuthority> authorities=new HashSet<>();
-		Set <UserRoles> roles=login.getRoles();
-		for(UserRoles userRole:roles) {
+		Set <UserRole> roles=compte.getRoles();
+		for(UserRole userRole:roles) {
 			authorities.add(new SimpleGrantedAuthority(userRole.getRole().toString()));
 		}
 		return authorities;
@@ -32,13 +34,13 @@ public class ArtisanCustomUserDetails implements UserDetails{
 	@Override
 	public String getPassword() {
 
-		return login.getPassword();
+		return compte.getMdp();
 	}
 
 	@Override
 	public String getUsername() {
 
-		return login.getLogin();
+		return compte.getLogin();
 	}
 
 	@Override
@@ -62,8 +64,8 @@ public class ArtisanCustomUserDetails implements UserDetails{
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return login.isEnable();
+		return compte.isEnable();
 	}
 
 }
-}
+

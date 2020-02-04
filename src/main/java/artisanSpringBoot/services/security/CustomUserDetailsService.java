@@ -8,21 +8,23 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import artisanSpringBoot.model.Login;
-import artisanSpringBoot.repositories.LoginRepository;
+import artisanSpringBoot.model.Compte;
+import artisanSpringBoot.repositories.CompteRepository;
+
+
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService{
 
 	@Autowired
-	private LoginRepository loginRepository;
+	private CompteRepository compteRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		Optional<Login> opt =loginRepository.findByIdWhithRoles(username);
+		Optional<Compte> opt =compteRepository.findByIdWithRoles(username);
 		if(opt.isPresent()) {
-			return new CustomUserDetails(opt.get());
+			return new ArtisanCustomUserDetails(opt.get());
 		}
 		throw new UsernameNotFoundException("not found");
 		
