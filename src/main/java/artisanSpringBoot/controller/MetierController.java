@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import model.Metier;
-import repository.MetierRepository;
-import repository.ServiceRepository;
+import artisanSpringBoot.model.Metier;
+import artisanSpringBoot.repositories.MetierRepository;
+import artisanSpringBoot.repositories.ServiceRepository;
 
 
 

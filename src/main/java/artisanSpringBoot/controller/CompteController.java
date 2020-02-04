@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import model.Artisan;
-import model.Client;
-import model.Compte;
-import repository.CompteRepository;
+import artisanSpringBoot.model.Artisan;
+import artisanSpringBoot.model.Client;
+import artisanSpringBoot.model.Compte;
+import artisanSpringBoot.repositories.CompteRepository;
 
 @Controller
 @RequestMapping("/compte")
