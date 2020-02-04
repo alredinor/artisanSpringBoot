@@ -21,6 +21,6 @@ public interface DemandeRepository extends JpaRepository<Demande, Long>{
 	List<Demande> findByStatut(StatutDemande statut);
 	List<Demande> findByDateBetween(Date date_min, Date date_max);
 	List<Demande> findByDateBefore(Date date);
-	List<Demande> findbYDateAfter(Date date);
+	List<Demande> findByDateAfter(Date date);
 
 }
