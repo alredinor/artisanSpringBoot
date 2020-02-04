@@ -13,7 +13,7 @@
 	src="${ctx}/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div>
+	<div class="container">
 		<h1>edition compte ${ctx}</h1>
 		
 		<c:choose>
@@ -76,7 +76,7 @@
 			
 			<div class="form-group">
 				<button type="submit" class="btn btn-success">envoyer</button>
-				<a href="${ctx}/compte/compteList">annuler</a>
+				<a href="${ctx}/compte/compteList" class="btn btn-warning">annuler</a>
 			</div>
 			
 		</form:form>
