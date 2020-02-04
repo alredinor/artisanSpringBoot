@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import model.Metier;
-import repository.MetierRepository;
+import artisanSpringBoot.model.Metier;
+import artisanSpringBoot.repositories.MetierRepository;
 
 @Service
 public class MetierService 

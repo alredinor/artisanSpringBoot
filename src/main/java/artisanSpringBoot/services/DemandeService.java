@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import model.Demande;
-import repository.DemandeRepository;
+import artisanSpringBoot.model.Demande;
+import artisanSpringBoot.repositories.DemandeRepository;
 
 @Service
 public class DemandeService {
