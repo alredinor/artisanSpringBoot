@@ -1,4 +1,4 @@
-package formation.sopra.formationSpringBoot.services;
+package artisanSpringBoot.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

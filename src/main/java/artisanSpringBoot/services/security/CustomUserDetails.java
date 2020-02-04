@@ -1,4 +1,4 @@
-package formation.sopra.formationSpringBoot.services.security;
+package artisanSpringBoot.services.security;
 
 import java.util.Collection;
 import java.util.HashSet;

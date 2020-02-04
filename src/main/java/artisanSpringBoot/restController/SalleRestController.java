@@ -1,4 +1,4 @@
-package formation.sopra.formationSpringBoot.restController;
+package artisanSpringBoot.restController;
 
 import java.net.URI;
 import java.net.URISyntaxException;

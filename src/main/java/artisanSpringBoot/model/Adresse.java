@@ -1,30 +1,29 @@
 package artisanSpringBoot.model;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
-
-import com.fasterxml.jackson.annotation.JsonView;
-
-import artisanSpringBoot.model.jsonview.JsonViews;
 
 @Embeddable
 public class Adresse {
-	@JsonView(JsonViews.Common.class)
-	@Column(name = "number")
+	
 	private Integer numero;
-	@JsonView(JsonViews.Common.class)
-	@Column(name = "street", length = 155)
+	//@Column(name="rue", length=155)
 	private String rue;
-	@JsonView(JsonViews.Common.class)
-	@Column(name = "zip_code", length = 20)
+	//@Column(name="cp",length=20)
 	private String codePostal;
-	@JsonView(JsonViews.Common.class)
-	@Column(name = "city", length = 155)
+	//@Column(name="ville",length=155)
 	private String ville;
 
 	public Adresse() {
-
+		
 	}
+	
+	
+
+	public Adresse(String ville) {
+		this.ville = ville;
+	}
+
+
 
 	public Adresse(Integer numero, String rue, String codePostal, String ville) {
 		super();
@@ -34,37 +33,46 @@ public class Adresse {
 		this.ville = ville;
 	}
 
+
 	public Integer getNumero() {
 		return numero;
 	}
+
 
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 
+
 	public String getRue() {
 		return rue;
 	}
+
 
 	public void setRue(String rue) {
 		this.rue = rue;
 	}
 
+
 	public String getCodePostal() {
 		return codePostal;
 	}
+
 
 	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 
+
 	public String getVille() {
 		return ville;
 	}
 
+
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -76,6 +84,7 @@ public class Adresse {
 		result = prime * result + ((ville == null) ? 0 : ville.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -108,5 +117,6 @@ public class Adresse {
 			return false;
 		return true;
 	}
-
+	
+	
 }
