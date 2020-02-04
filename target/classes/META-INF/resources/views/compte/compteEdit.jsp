@@ -13,7 +13,15 @@
 	src="${ctx}/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+<<<<<<< HEAD
 	<div class="container">
+=======
+<<<<<<< HEAD
+	<div class="container">
+=======
+	<div>
+>>>>>>> dc93530331f59f5a8bc1ba1cbd087c7f80e443ea
+>>>>>>> ab988593195962513355c306fd24d0eb4c434f0c
 		<h1>edition compte ${ctx}</h1>
 		
 		<c:choose>
@@ -76,7 +84,15 @@
 			
 			<div class="form-group">
 				<button type="submit" class="btn btn-success">envoyer</button>
+<<<<<<< HEAD
 				<a href="${ctx}/compte/compteList" class="btn btn-warning">annuler</a>
+=======
+<<<<<<< HEAD
+				<a href="${ctx}/compte/compteList" class="btn btn-warning">annuler</a>
+=======
+				<a href="${ctx}/compte/compteList">annuler</a>
+>>>>>>> dc93530331f59f5a8bc1ba1cbd087c7f80e443ea
+>>>>>>> ab988593195962513355c306fd24d0eb4c434f0c
 			</div>
 			
 		</form:form>
