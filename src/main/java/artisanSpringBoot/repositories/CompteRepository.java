@@ -16,6 +16,6 @@ public interface CompteRepository extends JpaRepository<Compte, Long> {
 	List<Compte> findByAdresse(Adresse adresse);
 	
 	@Query("select distinct c from Compte c left join fetch c.roles where c.idCompte=:idCompte")
-	Optional<Compte> findByIdWithRoles(String login);
+	Optional<Compte> findByIdWithRoles(Long idCompte);
 	
 }
