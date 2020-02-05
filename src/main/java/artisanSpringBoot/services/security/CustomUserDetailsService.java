@@ -19,15 +19,24 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Autowired
 	private CompteRepository compteRepository;
 	
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	
+	public UserDetails loadUserByIdCompte(Long idCompte) throws UsernameNotFoundException {
 		
-		Optional<Compte> opt =compteRepository.findByIdWithRoles(username);
+		Optional<Compte> opt =compteRepository.findByIdWithRoles(idCompte);
 		if(opt.isPresent()) {
 			return new ArtisanCustomUserDetails(opt.get());
 		}
 		throw new UsernameNotFoundException("not found");
 		
 	}
+
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }
