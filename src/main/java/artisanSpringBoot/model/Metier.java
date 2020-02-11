@@ -12,6 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import artisanSpringBoot.model.jsonview.JsonViews;
+
 @Entity
 @SequenceGenerator(name="seqMetier", sequenceName="seq_metier", initialValue = 1, allocationSize = 1)
 @Table(name="metier")
@@ -19,8 +23,10 @@ public class Metier
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqMetier")
+	@JsonView(JsonViews.Common.class)
 	private Long idMetier;
 	@Column(name="titre_metier", length=150)
+	@JsonView(JsonViews.Common.class)
 	private String titreMetier;
 	
 	public Long getIdMetier() {

@@ -19,37 +19,34 @@ import artisanSpringBoot.repositories.ServiceRepository;
 @RequestMapping("/metier")
 public class MetierController {
 
-	
-	
 	@Autowired
 	MetierRepository metierRepository;
-	
+
 	@Autowired
 	ServiceRepository serviceRepository;
-	
+
 	@GetMapping("/listmetier")
 	public ModelAndView list() {
 		return new ModelAndView("metier/listmetier", "metiers", metierRepository.findAll());
 	}
-	
-	
+
+
 	@GetMapping("/delete")
-	public  ModelAndView delete(@RequestParam (name="idMetier") long idMetier) {
-		metierRepository.deleteById(idMetier);
+	public  ModelAndView delete(@RequestParam (name="idMetier") Long id) {
+		metierRepository.deleteById(id);
 		return new ModelAndView("redirect:/metier/listmetier");
 	}
-	
+
 	@GetMapping("/addmetier")
 	public ModelAndView addmetier() {
 		return new ModelAndView("metier/addmetier", "metier", new Metier());
-		
+
 	}
 	@PostMapping("/savemetier")
 	public ModelAndView save(@ModelAttribute("metier") Metier metier){
 		metierRepository.save(metier);
 		return new ModelAndView("redirect:/metier/listmetier");
 	}
-	
 
-	}
+}
 
