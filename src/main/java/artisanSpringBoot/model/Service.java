@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonView;
+import artisanSpringBoot.model.jsonview.JsonViews;
+
 
 @Entity
 @Table(name="service")
@@ -18,11 +21,14 @@ public class Service {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqService")
+	@JsonView(JsonViews.Common.class)
 	private Long idService;
 	@Column(name="Service")
+	@JsonView(JsonViews.Common.class)
 	private String nomService;
 	@ManyToOne
 	@JoinColumn(name="id_metier", foreignKey = @ForeignKey(name="service_metier_id_fk"))
+	@JsonView(JsonViews.Common.class)
 	private Metier metier;
 	
 	public Long getIdService() {
