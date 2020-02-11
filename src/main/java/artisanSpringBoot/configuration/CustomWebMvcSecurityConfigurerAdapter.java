@@ -23,7 +23,8 @@ public class CustomWebMvcSecurityConfigurerAdapter extends WebSecurityConfigurer
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
-		http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
+		http.authorizeRequests().anyRequest().permitAll();
+//		http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
 //		http.authorizeRequests().antMatchers("/auth/admin/**").hasAnyRole("ADMIN").
 //		and().formLogin().loginPage("/login").
 //		and().authorizeRequests().antMatchers("/auth/**").authenticated().
