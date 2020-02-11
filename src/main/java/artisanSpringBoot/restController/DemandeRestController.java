@@ -24,6 +24,7 @@ import artisanSpringBoot.model.Demande;
 import artisanSpringBoot.model.jsonview.JsonViews;
 import artisanSpringBoot.repositories.DemandeRepository;
 
+
 @RestController
 @RequestMapping("/rest/demande")
 @CrossOrigin(origins= {"*"})
@@ -68,18 +69,27 @@ public class DemandeRestController {
 	}	
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> updateDemande (Long id, Demande d){
+	public ResponseEntity<Void> updateDemande (@PathVariable("id")Long id, @RequestBody Demande d){
 	
-		Optional <Demande> opt = demandeRepository.findById(d.getIdDemande());
-		if (opt.isPresent()) {
-			demandeRepository.save(d);
-			return new ResponseEntity<Void>(HttpStatus.OK);
+		Optional <Demande> opt = demandeRepository.findById(id);
+		if (!opt.isPresent()) {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-	}
-	
+		Demande demandeEnBase = opt.get();
+		demandeEnBase.setArtisan(d.getArtisan());
+		demandeEnBase.setClient(d.getClient());
+		demandeEnBase.setDate(d.getDate());
+		demandeEnBase.setMessage(d.getMessage());
+		demandeEnBase.setMetier(d.getMetier());
+		demandeEnBase.setService(d.getService());
+		demandeEnBase.setStatut(d.getStatut());
 		
+		demandeRepository.save(demandeEnBase);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
+}
+		
+	
 	
 		
 		
