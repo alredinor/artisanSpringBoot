@@ -49,7 +49,7 @@ public class serviceRestController {
 		return new ResponseEntity<List<Service>>(serviceRepository.findAll(),HttpStatus.OK);
 	}
 	
-	@GetMapping("/{idService}/metier")
+	@GetMapping("/{idService}")
 	@JsonView(JsonViews.Common.class)
 	public ResponseEntity<Service> findByKey(@PathVariable("idService") Long nomService){
 		
@@ -58,16 +58,7 @@ public class serviceRestController {
 			return new ResponseEntity<Service>(opt.get(),HttpStatus.OK);	
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		
 	}
-	
-//	@GetMapping("/{idService}/metier")
-//	@JsonView(JsonViews.Common.class)
-//	public ResponseEntity<List<Service>> findByKey(@PathVariable("idService") String nomService){
-//		
-//		List<Service> opt=serviceRepository.findByNomService(nomService);
-//			return new ResponseEntity<List<Service>>(serviceRepository.findAll(),HttpStatus.OK);
-//	}
 	
 	@PostMapping({"","/"})
 	public ResponseEntity<Void> addService(@RequestBody Service service, UriComponentsBuilder uCB) {
@@ -97,14 +88,8 @@ public class serviceRestController {
 	}
 	
 	//update d'un service à partir de son id
-	@PutMapping("/service/{idService}")
+	@PutMapping("/{idService}")
 	public ResponseEntity<Void> update(@PathVariable("idService") Long idService, @RequestBody @Valid Service s, BindingResult br){
-//		Optional<Service> opt = serviceRepository.findByIdService(idService);
-//		if(opt.isPresent()) {
-//			Service serviceEnBase=opt.get();
-//			serviceRepository.save(s);
-//		}
-//		return new ResponseEntity<Void>(HttpStatus.OK);
 		return updateService(idService, s,br);
 	}
 	
@@ -116,13 +101,8 @@ public class serviceRestController {
 			}
 			Service serviceEnBase=opt.get();
 			serviceEnBase.setNomService(s.getNomService()==null || s.getNomService().isEmpty() ? serviceEnBase.getNomService():s.getNomService());
-			if(serviceEnBase instanceof Service) {
-				//update du service
-				System.out.println("service mis à jour");
-			}else {
-				//
-			}
 			serviceRepository.save(serviceEnBase);
+			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
