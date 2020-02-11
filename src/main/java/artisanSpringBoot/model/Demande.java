@@ -15,6 +15,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import artisanSpringBoot.model.jsonview.JsonViews;
+
 @Entity
 @SequenceGenerator(name = "seqDemande", sequenceName = "seq_demande", initialValue = 1, allocationSize = 1)
 public class Demande {
@@ -22,28 +26,36 @@ public class Demande {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqDemande")
 	@Column(name = "id_demande")
+	@JsonView(JsonViews.Common.class)
 	private Long idDemande;
+	@JsonView(JsonViews.Common.class)
 	private String message;
 
 	@ManyToOne
 	@JoinColumn(name = "id_artisan", foreignKey = @ForeignKey(name = "demande_artisan_id_fk"))
+	@JsonView(JsonViews.Common.class)
 	private Compte artisan;
 
 	@ManyToOne
 	@JoinColumn(name = "id_client", foreignKey = @ForeignKey(name = "demande_client_id_fk"))
+	@JsonView(JsonViews.Common.class)
 	private Compte client;
 
 	@OneToOne
 	@JoinColumn(name = "id_service", foreignKey = @ForeignKey(name = "demande_service_id_fk"))
+	@JsonView(JsonViews.Common.class)
 	private Service service;
 
 	@OneToOne
 	@JoinColumn(name = "id_metier", foreignKey = @ForeignKey(name = "demande_metier_id_fk"))
+	@JsonView(JsonViews.Common.class)
 	private Metier metier;
 	@Column(name = "statut")
+	@JsonView(JsonViews.Common.class)
 	private StatutDemande statut;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date_creation_demande")
+	@JsonView(JsonViews.Common.class)
 	private Date date;
 	@Column(name = "version")
 	private int version;
