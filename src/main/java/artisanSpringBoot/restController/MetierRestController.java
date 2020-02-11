@@ -77,25 +77,18 @@ public class MetierRestController
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 	
-//	@PutMapping("/{id}")
-//	public ResponseEntity<Void> updateMetier (Long id, Metier m){
-//	
-//		Optional <Metier> opt = metierRepository.findById(m.getIdMetier());
-//		if (opt.isPresent()) {
-//			metierRepository.save(m);
-//			return new ResponseEntity<Void>(HttpStatus.OK);
-//		}
-//		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-//	}
-	
 	@PutMapping("/{id}")
-	public ResponseEntity<Metier> update(@PathVariable("id") Long idMetier, @RequestBody Metier metier)
-	{
-		Optional<Metier> opt = metierRepository.findById(idMetier);
-		if(opt.isPresent())
-		{
-			Metier metierEnBase=opt.get();
+	public ResponseEntity<Void> updateMetier (@PathVariable("id")Long id, @RequestBody Metier m){
+	
+		Optional <Metier> opt = metierRepository.findById(id);
+		if (!opt.isPresent()) {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Metier>(HttpStatus.NOT_FOUND);
+		Metier metierEnBase = opt.get();
+		metierEnBase.setIdMetier(m.getIdMetier());
+		metierEnBase.setTitreMetier(m.getTitreMetier());
+		
+		metierRepository.save(metierEnBase);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
