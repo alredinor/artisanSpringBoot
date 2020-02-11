@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,15 +40,14 @@ public class MetierRestController
 		return new ResponseEntity<List<Metier>> (metierRepository.findAll(),HttpStatus.OK);
 	}
 	
-	@PostMapping({"","/"})
-	@JsonView(JsonViews.Common.class)
+	@PostMapping({"/addMetier"})
 	public ResponseEntity<Void> addMetier(@RequestBody Metier metier, UriComponentsBuilder uCB)
 	{
-		Optional<Metier> opt=metierRepository.findById(metier.getIdMetier());
-		if(opt.isPresent())
-		{
-			return new ResponseEntity<>(HttpStatus.CONFLICT);
-		}
+//		Optional<Metier> opt=metierRepository.findById(metier.getIdMetier());
+//		if(opt.isPresent())
+//		{
+//			return new ResponseEntity<>(HttpStatus.CONFLICT);
+//		}
 		metierRepository.save(metier);
 		
 		HttpHeaders headers = new HttpHeaders();
@@ -56,7 +56,6 @@ public class MetierRestController
 	}
 	
 	@DeleteMapping("/{id}")
-	@JsonView(JsonViews.Common.class)
 	public ResponseEntity<Metier> delete(@PathVariable("id") Long id)
 	{
 		Optional<Metier> opt = metierRepository.findById(id);
@@ -77,4 +76,26 @@ public class MetierRestController
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+	
+//	@PutMapping("/{id}")
+//	public ResponseEntity<Void> updateMetier (Long id, Metier m){
+//	
+//		Optional <Metier> opt = metierRepository.findById(m.getIdMetier());
+//		if (opt.isPresent()) {
+//			metierRepository.save(m);
+//			return new ResponseEntity<Void>(HttpStatus.OK);
+//		}
+//		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+//	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Metier> update(@PathVariable("id") Long idMetier, @RequestBody Metier metier)
+	{
+		Optional<Metier> opt = metierRepository.findById(idMetier);
+		if(opt.isPresent())
+		{
+			Metier metierEnBase=opt.get();
+		}
+		return new ResponseEntity<Metier>(HttpStatus.NOT_FOUND);
+	}
 }
