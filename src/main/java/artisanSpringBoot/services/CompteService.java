@@ -14,7 +14,7 @@ public class CompteService
 		Compte compteBase = null;
 		if (c.getIdCompte() != null) 
 		{
-			Optional<Compte> opt = compte.findById(c.getIdCompte()); // optionnal : renvois un objet
+			Optional<Compte> opt = compte.findByIdCompte(c.getIdCompte()); // optionnal : renvois un objet
 			if (opt.isPresent()) {
 				compteBase = opt.get();
 				compteBase.setLogin((c.getLogin() != null) ? c.getLogin() : compteBase.getLogin());
