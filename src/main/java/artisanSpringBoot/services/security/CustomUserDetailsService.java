@@ -20,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	private CompteRepository compteRepository;
 	
 	
-	public UserDetails loadUserByIdCompte(Integer idCompte) throws UsernameNotFoundException {
+	public UserDetails loadUserByIdCompte(Long idCompte) throws UsernameNotFoundException {
 		
 		Optional<Compte> opt =compteRepository.findByIdWithRoles(idCompte);
 		if(opt.isPresent()) {

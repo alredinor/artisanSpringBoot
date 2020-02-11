@@ -28,7 +28,7 @@ public class Compte {
 	@Id
 	
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqCompte")
-	private Integer idCompte;
+	private Long idCompte;
 	@Column(name="login", length=150)
 	private String login;
 	@Column(name="mdp", length=150)
@@ -83,11 +83,11 @@ public class Compte {
 
 	}
 
-	public Integer getIdCompte() {
+	public Long getIdCompte() {
 		return idCompte;
 	}
 
-	public void setIdCompte(Integer idCompte) {
+	public void setIdCompte(Long idCompte) {
 		this.idCompte = idCompte;
 	}
 

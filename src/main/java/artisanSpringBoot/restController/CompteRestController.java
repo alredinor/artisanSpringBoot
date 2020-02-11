@@ -41,7 +41,7 @@ public class CompteRestController {
 		return new ResponseEntity<>(compteRepository.findAll(), HttpStatus.OK);
 	}
 
-	private ResponseEntity<Compte> findByKey(Integer id) {
+	private ResponseEntity<Compte> findByKey(Long id) {
 		Optional<Compte> opt = compteRepository.findByIdCompte(id);
 		if (opt.isPresent()) {
 			// ok
@@ -53,7 +53,7 @@ public class CompteRestController {
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
-	public ResponseEntity<Compte> findById(@PathVariable("id") Integer id) {
+	public ResponseEntity<Compte> findById(@PathVariable("id") Long id) {
 		return findByKey(id);
 	}
 
@@ -67,7 +67,7 @@ public class CompteRestController {
 	}*/
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
+	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
 		Optional<Compte> opt = compteRepository.findByIdCompte(id);
 		if (opt.isPresent()) {
 			compteRepository.deleteByIdCompte(id);
@@ -99,18 +99,18 @@ public class CompteRestController {
 	}
 
 	@PutMapping("/{id}/artisan")
-	public ResponseEntity<Void> updateArtisan(@PathVariable("id") Integer id, @Valid @RequestBody Artisan artisan,
+	public ResponseEntity<Void> updateArtisan(@PathVariable("id") Long id, @Valid @RequestBody Artisan artisan,
 			BindingResult br) {
 		return update(id, artisan, br);
 	}
 
 	@PutMapping("/{id}/client")
-	public ResponseEntity<Void> updateClient(@PathVariable("id") Integer id, @Valid @RequestBody Client Eleve,
+	public ResponseEntity<Void> updateClient(@PathVariable("id") Long id, @Valid @RequestBody Client Eleve,
 			BindingResult br) {
 		return update(id, Eleve, br);
 	}
 
-	private ResponseEntity<Void> update(Integer id, Compte compte, BindingResult br) {
+	private ResponseEntity<Void> update(Long id, Compte compte, BindingResult br) {
 		if (br.hasErrors()) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
