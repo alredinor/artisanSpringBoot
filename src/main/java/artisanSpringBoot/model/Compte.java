@@ -17,6 +17,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import artisanSpringBoot.model.jsonview.JsonViews;
+
+
+
 @Entity
 @Table(name="compte")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -26,22 +32,27 @@ import javax.persistence.Table;
 public class Compte {
 	
 	@Id
-	
+	@JsonView(JsonViews.Common.class)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqCompte")
 	private Long idCompte;
+	@JsonView(JsonViews.Common.class)
 	@Column(name="login", length=150)
 	private String login;
+	@JsonView(JsonViews.Common.class)
 	@Column(name="mdp", length=150)
 	private String mdp;
+	@JsonView(JsonViews.Common.class)
 	@Column(name="mail", length=255)
 	private String email;
 	@Embedded
+	@JsonView(JsonViews.Common.class)
 	private Adresse adresse;
 	//private String typeCompte;
 	@Column(name="version")
 	private int version;
 	
 	private boolean enable;
+	@JsonView(JsonViews.Common.class)
 	@OneToMany(mappedBy = "idCompte")
 	private Set<UserRole> roles;
 	

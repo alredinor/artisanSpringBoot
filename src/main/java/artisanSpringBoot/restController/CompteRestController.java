@@ -29,7 +29,7 @@ import artisanSpringBoot.model.jsonview.JsonViews;
 import artisanSpringBoot.repositories.CompteRepository;
 
 @RestController
-@RequestMapping("/art/compte")
+@RequestMapping("/rest/compte")
 public class CompteRestController {
 
 	@Autowired
