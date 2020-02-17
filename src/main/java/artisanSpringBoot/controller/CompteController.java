@@ -45,7 +45,7 @@ public class CompteController {
 	}
 
 	@GetMapping("/compteEdit")
-	public String edit(@RequestParam(name = "idCompte") long id, Model model) {
+	public String edit(@RequestParam(name = "idCompte") Integer id, Model model) {
 		Optional<Compte> opt = compteRepository.findById(id);
 		Compte c = null;
 		if (opt.isPresent()) {
@@ -94,7 +94,7 @@ public class CompteController {
 //METHODE EDIT
 
 	@GetMapping("/delete")
-	public String delete(@RequestParam(name = "idCompte") long id) {
+	public String delete(@RequestParam(name = "idCompte") Integer id) {
 		compteRepository.deleteById(id);
 		return "redirect:/compte/compteList";
 	}

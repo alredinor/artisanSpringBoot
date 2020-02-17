@@ -8,7 +8,7 @@ import artisanSpringBoot.model.Adresse;
 import artisanSpringBoot.model.Client;
 
 
-public interface ClientRepository extends JpaRepository<Client, Long>{
+public interface ClientRepository extends JpaRepository<Client, Integer>{
 	
 	
 	List<Client> findByIdCompte(Long idCompte);

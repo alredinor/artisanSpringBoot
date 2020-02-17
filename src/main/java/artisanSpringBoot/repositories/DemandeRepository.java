@@ -11,9 +11,9 @@ import artisanSpringBoot.model.Demande;
 import artisanSpringBoot.model.Metier;
 import artisanSpringBoot.model.StatutDemande;
 
-public interface DemandeRepository extends JpaRepository<Demande, Long>{
+public interface DemandeRepository extends JpaRepository<Demande, Integer>{
 	
-	List<Demande> findByIdDemande(Long idDemande);
+	List<Demande> findByIdDemande(Integer idDemande);
 	List<Demande> findByArtisan(Compte idArtisan);
 	List<Demande> findByClient(Compte idClient);
 	List<Demande> findByService(Service idService);

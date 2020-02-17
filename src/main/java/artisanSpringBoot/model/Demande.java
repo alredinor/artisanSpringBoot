@@ -27,7 +27,7 @@ public class Demande {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqDemande")
 	@Column(name = "id_demande")
 	@JsonView(JsonViews.Common.class)
-	private Long idDemande;
+	private Integer idDemande;
 	@JsonView(JsonViews.Common.class)
 	private String message;
 
@@ -79,11 +79,11 @@ public class Demande {
 	public Demande() {
 	}
 
-	public Long getIdDemande() {
+	public Integer getIdDemande() {
 		return idDemande;
 	}
 
-	public void setIdDemande(Long idDemande) {
+	public void setIdDemande(Integer idDemande) {
 		this.idDemande = idDemande;
 	}
 

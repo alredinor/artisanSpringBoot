@@ -9,10 +9,10 @@ import artisanSpringBoot.model.Compte;
 import artisanSpringBoot.model.Metier;
 import artisanSpringBoot.model.MetierJoinCompte;
 
-public interface MetierJoinCompteRepository extends JpaRepository<MetierJoinCompte, Long> {
+public interface MetierJoinCompteRepository extends JpaRepository<MetierJoinCompte, Integer> {
 	
 	
-	Optional <MetierJoinCompte> findById (Long id);
+	Optional <MetierJoinCompte> findById (Integer id);
 	List <MetierJoinCompte> findByMetier(Metier metier);
 	List <MetierJoinCompte> findByCompte(Compte compte);
 }

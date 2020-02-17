@@ -41,7 +41,7 @@ public class DemandeRestController {
 	
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public ResponseEntity<Demande> FindByKey(@PathVariable("id") Long id){
+	public ResponseEntity<Demande> FindByKey(@PathVariable("id") Integer id){
 		Optional<Demande> opt = demandeRepository.findById(id);
 		if(opt.isPresent()) {
 			return new ResponseEntity<Demande>(opt.get(), HttpStatus.OK);
@@ -49,7 +49,7 @@ public class DemandeRestController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> delete(@PathVariable("id") Long id){
+	public ResponseEntity<Void> delete(@PathVariable("id") Integer id){
 		Optional<Demande> opt = demandeRepository.findById(id);
 		if( opt.isPresent()) {
 			demandeRepository.deleteById(id);
@@ -69,7 +69,7 @@ public class DemandeRestController {
 	}	
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> updateDemande (@PathVariable("id")Long id, @RequestBody Demande d){
+	public ResponseEntity<Void> updateDemande (@PathVariable("id")Integer id, @RequestBody Demande d){
 	
 		Optional <Demande> opt = demandeRepository.findById(id);
 		if (!opt.isPresent()) {

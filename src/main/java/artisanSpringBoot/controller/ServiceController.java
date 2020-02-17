@@ -43,7 +43,7 @@ public class ServiceController {
 //	}
 //	
 	@GetMapping("/delete")
-	public  ModelAndView delete(@RequestParam (name="idService") long idService) {
+	public  ModelAndView delete(@RequestParam (name="idService") Integer idService) {
 		serviceRepository.deleteById(idService);
 		return new ModelAndView("redirect:/service/listservice");
 	}

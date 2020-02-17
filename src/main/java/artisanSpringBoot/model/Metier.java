@@ -24,15 +24,15 @@ public class Metier
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqMetier")
 	@JsonView(JsonViews.Common.class)
-	private Long idMetier;
+	private Integer idMetier;
 	@Column(name="titre_metier", length=150)
 	@JsonView(JsonViews.Common.class)
 	private String titreMetier;
 	
-	public Long getIdMetier() {
+	public Integer getIdMetier() {
 		return idMetier;
 	}
-	public void setIdMetier(Long idMetier) {
+	public void setIdMetier(Integer idMetier) {
 		this.idMetier = idMetier;
 	}
 	public String getTitreMetier() {
