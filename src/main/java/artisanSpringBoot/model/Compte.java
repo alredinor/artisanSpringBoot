@@ -34,7 +34,7 @@ public class Compte {
 	@Id
 	@JsonView(JsonViews.Common.class)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqCompte")
-	private Long idCompte;
+	private Integer idCompte;
 	@JsonView(JsonViews.Common.class)
 	@Column(name="login", length=150)
 	private String login;
@@ -94,11 +94,11 @@ public class Compte {
 
 	}
 
-	public Long getIdCompte() {
+	public Integer getIdCompte() {
 		return idCompte;
 	}
 
-	public void setIdCompte(Long idCompte) {
+	public void setIdCompte(Integer idCompte) {
 		this.idCompte = idCompte;
 	}
 

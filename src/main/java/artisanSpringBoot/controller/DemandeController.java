@@ -29,7 +29,7 @@ public class DemandeController {
 	}
 	
 	@GetMapping("/editdemande")
-	public String edit(@RequestParam(name="idDemande") Long idDemande, Model model) {
+	public String edit(@RequestParam(name="idDemande") Integer idDemande, Model model) {
 	Optional<Demande> opt=demandeRepository.findById(idDemande);
 	Demande d=null;
 	if (opt.isPresent()) {
@@ -63,7 +63,7 @@ public class DemandeController {
 	}
 	
 	@GetMapping("/delete")
-	public String delete(@RequestParam (name="idDemande") Long idDemande) {
+	public String delete(@RequestParam (name="idDemande") Integer idDemande) {
 		demandeRepository.deleteById(idDemande);
 		return "redirect:/demande/listdemande";
 	}

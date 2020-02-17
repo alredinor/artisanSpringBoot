@@ -22,7 +22,7 @@ public class Service {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqService")
 	@JsonView(JsonViews.Common.class)
-	private Long idService;
+	private Integer idService;
 	@Column(name="Service")
 	@JsonView(JsonViews.Common.class)
 	private String nomService;
@@ -31,10 +31,10 @@ public class Service {
 	@JsonView(JsonViews.Common.class)
 	private Metier metier;
 	
-	public Long getIdService() {
+	public Integer getIdService() {
 		return idService;
 	}
-	public void setIdService(Long idService) {
+	public void setIdService(Integer idService) {
 		this.idService = idService;
 	}
 	public String getNomService() {

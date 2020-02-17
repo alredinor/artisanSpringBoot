@@ -8,7 +8,7 @@ import artisanSpringBoot.model.Adresse;
 import artisanSpringBoot.model.Artisan;
 
 
-public interface ArtisanRepository extends JpaRepository<Artisan, Long> {
+public interface ArtisanRepository extends JpaRepository<Artisan, Integer> {
 	
 	
 	List<Artisan> findByLogin(String login);

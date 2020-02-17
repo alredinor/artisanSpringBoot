@@ -51,7 +51,7 @@ public class serviceRestController {
 	
 	@GetMapping("/{idService}")
 	@JsonView(JsonViews.Common.class)
-	public ResponseEntity<Service> findByKey(@PathVariable("idService") Long nomService){
+	public ResponseEntity<Service> findByKey(@PathVariable("idService") Integer nomService){
 		
 		Optional<Service> opt=serviceRepository.findByIdService(nomService);
 		if(opt.isPresent()) {
@@ -78,7 +78,7 @@ public class serviceRestController {
 	}
 	
 	@DeleteMapping("/{idService}")
-	public ResponseEntity<Void> delete(@PathVariable("idService") Long nomService){
+	public ResponseEntity<Void> delete(@PathVariable("idService") Integer nomService){
 		Optional<Service> opt=serviceRepository.findByIdService(nomService);
 		if(opt.isPresent()) {
 			serviceRepository.deleteById(nomService);
@@ -89,11 +89,11 @@ public class serviceRestController {
 	
 	//update d'un service à partir de son id
 	@PutMapping("/{idService}")
-	public ResponseEntity<Void> update(@PathVariable("idService") Long idService, @RequestBody @Valid Service s, BindingResult br){
+	public ResponseEntity<Void> update(@PathVariable("idService") Integer idService, @RequestBody @Valid Service s, BindingResult br){
 		return updateService(idService, s,br);
 	}
 	
-	public ResponseEntity<Void> updateService(Long idService, Service s, BindingResult br){
+	public ResponseEntity<Void> updateService(Integer idService, Service s, BindingResult br){
 		Optional<Service> opt=serviceRepository.findByIdService(idService);
 		if(opt.isPresent()) {
 			if(br.hasErrors()) {

@@ -56,7 +56,7 @@ public class MetierRestController
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Metier> delete(@PathVariable("id") Long id)
+	public ResponseEntity<Metier> delete(@PathVariable("id") Integer id)
 	{
 		Optional<Metier> opt = metierRepository.findById(id);
 		if(opt.isPresent())
@@ -69,7 +69,7 @@ public class MetierRestController
 	
 	@GetMapping("/{id}")
     @JsonView(JsonViews.Common.class)
-    public ResponseEntity<Metier> FindByKey(@PathVariable("id") Long id){
+    public ResponseEntity<Metier> FindByKey(@PathVariable("id") Integer id){
         Optional<Metier> opt = metierRepository.findById(id);
         if(opt.isPresent()) {
             return new ResponseEntity<Metier>(opt.get(), HttpStatus.OK);
@@ -78,7 +78,7 @@ public class MetierRestController
     }
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> updateMetier (@PathVariable("id")Long id, @RequestBody Metier m){
+	public ResponseEntity<Void> updateMetier (@PathVariable("id")Integer id, @RequestBody Metier m){
 	
 		Optional <Metier> opt = metierRepository.findById(id);
 		if (!opt.isPresent()) {

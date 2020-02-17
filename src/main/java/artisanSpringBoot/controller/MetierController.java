@@ -32,7 +32,7 @@ public class MetierController {
 
 
 	@GetMapping("/delete")
-	public  ModelAndView delete(@RequestParam (name="idMetier") Long id) {
+	public  ModelAndView delete(@RequestParam (name="idMetier") Integer id) {
 		metierRepository.deleteById(id);
 		return new ModelAndView("redirect:/metier/listmetier");
 	}
