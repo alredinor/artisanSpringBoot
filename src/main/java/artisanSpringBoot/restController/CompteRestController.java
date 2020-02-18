@@ -77,13 +77,13 @@ public class CompteRestController {
 	}
 
 	@PostMapping("/artisan")
-	public ResponseEntity<Void> insertFormateur(@Valid @RequestBody Artisan artisan, BindingResult br,
+	public ResponseEntity<Void> insertArtisan(@Valid @RequestBody Artisan artisan, BindingResult br,
 			UriComponentsBuilder uCB) {
 		return insert(artisan, br, uCB);
 	}
 
 	@PostMapping("/client")
-	public ResponseEntity<Void> insertEleve(@Valid @RequestBody Client client, BindingResult br,
+	public ResponseEntity<Void> insertClient(@Valid @RequestBody Client client, BindingResult br,
 			UriComponentsBuilder uCB) {
 		return insert(client, br, uCB);
 	}
@@ -114,7 +114,7 @@ public class CompteRestController {
 		if (br.hasErrors()) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		Optional<Compte> opt = compteRepository.findByIdCompte(id);
+		Optional<Compte> opt = compteRepository.findById(id);
 		if (!opt.isPresent()) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

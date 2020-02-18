@@ -11,7 +11,7 @@ import artisanSpringBoot.model.Client;
 public interface ClientRepository extends JpaRepository<Client, Integer>{
 	
 	
-	List<Client> findByIdCompte(Long idCompte);
+	List<Client> findByIdCompte(Integer idCompte);
 	List<Client> findByAdresse(Adresse adresse);
 	List<Client> findByLogin(String login);
 	List<Client> findByEmail(String email);
