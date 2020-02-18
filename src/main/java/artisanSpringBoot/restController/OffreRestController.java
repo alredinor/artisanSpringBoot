@@ -57,7 +57,7 @@ public class OffreRestController {
 		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 	}
 	
-	@PostMapping({"/addoffre"})	
+	@PostMapping({"/addOffre"})	
 	public ResponseEntity<Void> addoffre (@RequestBody Offre offre, UriComponentsBuilder uCB){
 	
 		offreRepository.save(offre);
