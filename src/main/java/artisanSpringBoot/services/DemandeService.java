@@ -24,7 +24,16 @@ public class DemandeService {
 				demandeBase=opt.get();
 				
 				//on verifie l'idDemande
-				demandeBase.setIdDemande((d.getIdDemande()!=null)?d.getIdDemande():demandeBase.getIdDemande());
+			
+				demandeBase.setArtisan((d.getArtisan()!=null)?d.getArtisan():demandeBase.getArtisan());
+				demandeBase.setClient((d.getClient()!=null)?d.getClient():demandeBase.getClient());
+				demandeBase.setDate((d.getDate()!=null)?d.getDate():demandeBase.getDate());
+				demandeBase.setMessage((d.getMessage()!=null)?d.getMessage():demandeBase.getMessage());
+				demandeBase.setMetier((d.getMetier()!=null)?d.getMetier():demandeBase.getMetier());
+				demandeBase.setService((d.getService()!=null)?d.getService():demandeBase.getService());
+				demandeBase.setStatut((d.getStatut()!=null)?d.getStatut():demandeBase.getStatut());
+				
+				
 				
 				demandeRepository.save(demandeBase);
 				return true;
@@ -32,10 +41,37 @@ public class DemandeService {
 			
 		}else {
 			boolean erreur=false;
-			if(d.getIdDemande()==null) {
-				return true;
+			
+			if (d.getArtisan() == null) 
+			{
+				erreur = true;
 			}
-			if(!erreur){
+			if (d.getClient() == null) 
+			{
+				erreur = true;
+			}
+			if (d.getDate() == null) 
+			{
+				erreur = true;
+			}
+			if (d.getMessage() == null) 
+			{
+				erreur = true;
+			}
+			if (d.getMetier() == null) 
+			{
+				erreur = true;
+			}
+			if (d.getService() == null) 
+			{
+				erreur = true;
+			}
+			if (d.getStatut() == null) 
+			{
+				erreur = true;
+			}
+			if (!erreur)
+			{
 				demandeRepository.save(d);
 				return true;
 			}
