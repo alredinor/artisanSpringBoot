@@ -24,7 +24,7 @@ public class DemandeService {
 				demandeBase=opt.get();
 				
 				//on verifie l'idDemande
-				demandeBase.setIdDemande((d.getIdDemande()!=null)?d.getIdDemande():demandeBase.getIdDemande());
+			
 				demandeBase.setArtisan((d.getArtisan()!=null)?d.getArtisan():demandeBase.getArtisan());
 				demandeBase.setClient((d.getClient()!=null)?d.getClient():demandeBase.getClient());
 				demandeBase.setDate((d.getDate()!=null)?d.getDate():demandeBase.getDate());
@@ -41,13 +41,8 @@ public class DemandeService {
 			
 		}else {
 			boolean erreur=false;
-			if(d.getIdDemande()==null) {
-				return true;
-			}
-			if(!erreur){
-				demandeRepository.save(d);
-				return true;
-			}if (d.getArtisan() == null) 
+			
+			if (d.getArtisan() == null) 
 			{
 				erreur = true;
 			}
@@ -75,7 +70,7 @@ public class DemandeService {
 			{
 				erreur = true;
 			}
-			if (erreur)
+			if (!erreur)
 			{
 				demandeRepository.save(d);
 				return true;
