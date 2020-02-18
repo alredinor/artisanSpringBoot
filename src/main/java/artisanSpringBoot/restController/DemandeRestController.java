@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import artisanSpringBoot.model.Demande;
 import artisanSpringBoot.model.jsonview.JsonViews;
 import artisanSpringBoot.repositories.DemandeRepository;
+import artisanSpringBoot.services.DemandeService;
 
 
 @RestController
@@ -32,6 +33,8 @@ public class DemandeRestController {
 
 	@Autowired
 	private DemandeRepository demandeRepository;
+	@Autowired
+	private DemandeService demandeService;
 	
 	@GetMapping({ "","/"})
 	@JsonView(JsonViews.Common.class)
@@ -76,14 +79,14 @@ public class DemandeRestController {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
 		Demande demandeEnBase = opt.get();
-		demandeEnBase.setArtisan(d.getArtisan());
-		demandeEnBase.setClient(d.getClient());
-		demandeEnBase.setDate(d.getDate());
-		demandeEnBase.setMessage(d.getMessage());
-		demandeEnBase.setMetier(d.getMetier());
-		demandeEnBase.setService(d.getService());
-		demandeEnBase.setStatut(d.getStatut());
-		
+		demandeEnBase.setArtisan((d.getArtisan()!=null)?d.getArtisan():demandeEnBase.getArtisan());
+		demandeEnBase.setClient((d.getClient()!=null)?d.getClient():demandeEnBase.getClient());
+		demandeEnBase.setDate((d.getDate()!=null)?d.getDate():demandeEnBase.getDate());
+		demandeEnBase.setMessage((d.getMessage()!=null)?d.getMessage():demandeEnBase.getMessage());
+		demandeEnBase.setMetier((d.getMetier()!=null)?d.getMetier():demandeEnBase.getMetier());
+		demandeEnBase.setService((d.getService()!=null)?d.getService():demandeEnBase.getService());
+		demandeEnBase.setStatut((d.getStatut()!=null)?d.getStatut():demandeEnBase.getStatut());
+	
 		demandeRepository.save(demandeEnBase);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
