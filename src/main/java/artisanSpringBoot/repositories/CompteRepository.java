@@ -11,12 +11,13 @@ import artisanSpringBoot.model.Compte;
 
 public interface CompteRepository extends JpaRepository<Compte, Integer> {
 	
-	Optional<Compte> findByIdCompte(Integer id);
+	
 	List<Compte> findByEmail(String mail);
 	List<Compte> findByAdresse(Adresse adresse);
 	
 	@Query("select distinct c from Compte c left join fetch c.roles where c.idCompte=:idCompte")
 	Optional<Compte> findByIdWithRoles(Integer idCompte);
 	Optional<Compte> deleteByIdCompte(Integer id);
+	Optional<Compte> findByIdCompte(Integer id);
 	
 }
