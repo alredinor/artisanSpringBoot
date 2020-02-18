@@ -19,5 +19,6 @@ public interface CompteRepository extends JpaRepository<Compte, Integer> {
 	Optional<Compte> findByIdWithRoles(Integer idCompte);
 	Optional<Compte> deleteByIdCompte(Integer id);
 	Optional<Compte> findByIdCompte(Integer id);
+	Optional<Compte> findById(Integer idCompte);
 	
 }
