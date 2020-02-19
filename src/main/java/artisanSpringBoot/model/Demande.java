@@ -32,6 +32,11 @@ public class Demande {
 	private String message;
 
 	@ManyToOne
+	@JoinColumn(name = "id_offre", foreignKey = @ForeignKey(name = "demande_offre_id_fk"))
+	@JsonView(JsonViews.Common.class)
+	private Offre offre;
+	
+	@ManyToOne
 	@JoinColumn(name = "id_artisan", foreignKey = @ForeignKey(name = "demande_artisan_id_fk"))
 	@JsonView(JsonViews.Common.class)
 	private Compte artisan;
@@ -133,6 +138,14 @@ public class Demande {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	
+	public Offre getOffre() {
+		return offre;
+	}
+
+	public void setOffre(Offre offre) {
+		this.offre = offre;
 	}
 
 	@Override
