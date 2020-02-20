@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,8 +27,11 @@ import com.fasterxml.jackson.annotation.JsonView;
 import artisanSpringBoot.model.Artisan;
 import artisanSpringBoot.model.Client;
 import artisanSpringBoot.model.Compte;
+import artisanSpringBoot.model.Role;
+import artisanSpringBoot.model.UserRole;
 import artisanSpringBoot.model.jsonview.JsonViews;
 import artisanSpringBoot.repositories.CompteRepository;
+import artisanSpringBoot.repositories.UserRoleRepository;
 
 @RestController
 @RequestMapping("/rest/compte")
@@ -36,6 +40,11 @@ public class CompteRestController {
 
 	@Autowired
 	private CompteRepository compteRepository;
+	@Autowired
+	private UserRoleRepository userRoleRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping({ "", "/" })
@@ -94,7 +103,12 @@ public class CompteRestController {
 		if (br.hasErrors()) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+		compte.setMdp(passwordEncoder.encode(compte.getMdp()));
+		compte.setEnable(true);
 		compteRepository.save(compte);
+		UserRole userRole = new UserRole();
+		userRole.setIdCompte(compte);
+		userRole.setRole(Role.ROLE_CLIENT);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(uCB.path("/rest/Personne/{id}").buildAndExpand(compte.getIdCompte()).toUri());
 		return new ResponseEntity<>(headers, HttpStatus.CREATED);
